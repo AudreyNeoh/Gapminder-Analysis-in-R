@@ -1,13 +1,11 @@
  install.packages("gapminder")
 install.packages("dplyr")
 install.packages("ggplot2")
-install.packages("shiny")
 install.packages("ggcorrplot")
 
 library(gapminder)
 library(dplyr)
 library(ggplot2)
-library(shiny)
 library(ggcorrplot)
 
 data <- gapminder
