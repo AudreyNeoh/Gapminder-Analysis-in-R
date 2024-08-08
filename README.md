@@ -20,8 +20,9 @@ This repository contains an analysis in R, of global trends in life expectancy a
    install.packages("ggcorrplot")
    ```
 3. **Run the Analysis:**
-   - Use `gapminder_markdown.Rmd` for a detailed R Markdown report.
    - Use `analysis_code.R` for direct analysis scripts.
+   - Use `gapminder_markdown.Rmd` for a detailed R Markdown report.
+   - Open `gapminder_markdown.html` to directly view R Markdown report on browser. 
 
 ## Conclusions
 - Life expectancy and GDP per Capita has generally increased over time across all continents.
