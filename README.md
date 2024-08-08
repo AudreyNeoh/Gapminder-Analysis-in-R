@@ -17,7 +17,6 @@ This repository contains an analysis in R, of global trends in life expectancy a
    install.packages("gapminder")
    install.packages("dplyr")
    install.packages("ggplot2")
-   install.packages("shiny")
    install.packages("ggcorrplot")
    ```
 3. **Run the Analysis:**
