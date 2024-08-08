@@ -4,7 +4,7 @@ This repository contains an analysis in R, of global trends in life expectancy a
 ## Tools Used
 - R
 - R Packages: `gapminder`, `dplyr`, `ggplot2`, `shiny`, `ggcorrplot`
--RMarkdown
+- RMarkdown
 
 ## Instructions
 1. **Clone the Repository:**
