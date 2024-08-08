@@ -1,7 +1,8 @@
 ---
 title: "Exploring Global Trends in Life Expectancy and GDP"
-autor: "Neoh Yi Theng"
-output: html_document
+output: 
+  html_document:
+    toc: TRUE
 date: "`r Sys.Date()`"
 ---
 
@@ -68,7 +69,7 @@ year_range
 
 # Data Analysis
 
-### Wordlwide metrics by year
+### Worldwide metrics by year
 
 ```{r}
 data_stats <- data %>%
@@ -87,7 +88,7 @@ data_stats <- data %>%
 data_stats
 ```
 
-### Quartiles for GDP per Capita and Life Expentancy
+### Quantiles for GDP per Capita and Life Expentancy
 
 ```{r}
 quantiles <- data %>%
@@ -116,6 +117,7 @@ continent_gdpPercap <- data %>%
   group_by(continent, year) %>%
   summarise(mean_gdpPercap = mean(gdpPercap))
 continent_gdpPercap
+
 ```
 
 ### Highest Life Expectancy and GDP per Capita by year
@@ -127,11 +129,15 @@ highest_lifeExp <- data %>%
   select(year, country, continent, gdpPercap, lifeExp) %>%
   arrange(year)
 
+highest_lifeExp
+
 highest_gdpPercap <- data %>%
   group_by(year) %>%
   filter(lifeExp == max(lifeExp)) %>%
   select(year, country, continent, gdpPercap, lifeExp) %>%
   arrange(year)
+
+highest_gdpPercap
 ```
 
 ### Correlation between GDP per Capita and Life Expectancy

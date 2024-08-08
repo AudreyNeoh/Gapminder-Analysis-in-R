@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Neoh Yi Theng" />
 
 <meta name="date" content="2024-08-08" />
 
@@ -352,7 +351,6 @@ display: none;
 
 <h1 class="title toc-ignore">Exploring Global Trends in Life Expectancy
 and GDP</h1>
-<h4 class="author">Neoh Yi Theng</h4>
 <h4 class="date">2024-08-08</h4>
 
 </div>
@@ -374,8 +372,8 @@ structure</a></li>
 </ul></li>
 <li><a href="#data-analysis" id="toc-data-analysis">Data Analysis</a>
 <ul>
-<li><a href="#wordlwide-metrics-by-year" id="toc-wordlwide-metrics-by-year">Wordlwide metrics by year</a></li>
-<li><a href="#quartiles-for-gdp-per-capita-and-life-expentancy" id="toc-quartiles-for-gdp-per-capita-and-life-expentancy">Quartiles for
+<li><a href="#worldwide-metrics-by-year" id="toc-worldwide-metrics-by-year">Worldwide metrics by year</a></li>
+<li><a href="#quantiles-for-gdp-per-capita-and-life-expentancy" id="toc-quantiles-for-gdp-per-capita-and-life-expentancy">Quantiles for
 GDP per Capita and Life Expentancy</a></li>
 <li><a href="#life-expectancy-changes-across-continents" id="toc-life-expectancy-changes-across-continents">Life expectancy
 changes across continents</a></li>
@@ -438,22 +436,22 @@ trends in life expectancy and GDP.</p>
 <pre><code>## package &#39;gapminder&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\Admin\AppData\Local\Temp\RtmpA7PYIY\downloaded_packages</code></pre>
+##  C:\Users\Admin\AppData\Local\Temp\RtmpWuydJX\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;dplyr&quot;)</code></pre>
 <pre><code>## package &#39;dplyr&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\Admin\AppData\Local\Temp\RtmpA7PYIY\downloaded_packages</code></pre>
+##  C:\Users\Admin\AppData\Local\Temp\RtmpWuydJX\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <pre><code>## package &#39;ggplot2&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\Admin\AppData\Local\Temp\RtmpA7PYIY\downloaded_packages</code></pre>
+##  C:\Users\Admin\AppData\Local\Temp\RtmpWuydJX\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;shiny&quot;)</code></pre>
 <pre><code>## package &#39;shiny&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\Admin\AppData\Local\Temp\RtmpA7PYIY\downloaded_packages</code></pre>
+##  C:\Users\Admin\AppData\Local\Temp\RtmpWuydJX\downloaded_packages</code></pre>
 <pre class="r"><code>library(gapminder)
 library(dplyr)
 library(ggplot2)
@@ -516,8 +514,8 @@ year_range</code></pre>
 </div>
 <div id="data-analysis" class="section level1">
 <h1>Data Analysis</h1>
-<div id="wordlwide-metrics-by-year" class="section level3">
-<h3>Wordlwide metrics by year</h3>
+<div id="worldwide-metrics-by-year" class="section level3">
+<h3>Worldwide metrics by year</h3>
 <pre class="r"><code>data_stats &lt;- data %&gt;%
   group_by(year) %&gt;%
   summarise(
@@ -550,8 +548,8 @@ data_stats</code></pre>
 ## # ℹ 3 more variables: mean_gdpPercap &lt;dbl&gt;, sd_gdpPercap &lt;dbl&gt;,
 ## #   median_gdpPercap &lt;dbl&gt;</code></pre>
 </div>
-<div id="quartiles-for-gdp-per-capita-and-life-expentancy" class="section level3">
-<h3>Quartiles for GDP per Capita and Life Expentancy</h3>
+<div id="quantiles-for-gdp-per-capita-and-life-expentancy" class="section level3">
+<h3>Quantiles for GDP per Capita and Life Expentancy</h3>
 <pre class="r"><code>quantiles &lt;- data %&gt;%
   summarise(
     q1_gdpPercap = quantile(gdpPercap, 0.25),
@@ -621,11 +619,46 @@ quantiles</code></pre>
   select(year, country, continent, gdpPercap, lifeExp) %&gt;%
   arrange(year)
 
-highest_gdpPercap &lt;- data %&gt;%
+highest_lifeExp</code></pre>
+<pre><code>## # A tibble: 12 × 5
+## # Groups:   year [12]
+##     year country      continent gdpPercap lifeExp
+##    &lt;int&gt; &lt;fct&gt;        &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+##  1  1952 Kuwait       Asia        108382.    55.6
+##  2  1957 Kuwait       Asia        113523.    58.0
+##  3  1962 Kuwait       Asia         95458.    60.5
+##  4  1967 Kuwait       Asia         80895.    64.6
+##  5  1972 Kuwait       Asia        109348.    67.7
+##  6  1977 Kuwait       Asia         59265.    69.3
+##  7  1982 Saudi Arabia Asia         33693.    63.0
+##  8  1987 Norway       Europe       31541.    75.9
+##  9  1992 Kuwait       Asia         34933.    75.2
+## 10  1997 Norway       Europe       41283.    78.3
+## 11  2002 Norway       Europe       44684.    79.0
+## 12  2007 Norway       Europe       49357.    80.2</code></pre>
+<pre class="r"><code>highest_gdpPercap &lt;- data %&gt;%
   group_by(year) %&gt;%
   filter(lifeExp == max(lifeExp)) %&gt;%
   select(year, country, continent, gdpPercap, lifeExp) %&gt;%
-  arrange(year)</code></pre>
+  arrange(year)
+
+highest_gdpPercap</code></pre>
+<pre><code>## # A tibble: 12 × 5
+## # Groups:   year [12]
+##     year country continent gdpPercap lifeExp
+##    &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+##  1  1952 Norway  Europe       10095.    72.7
+##  2  1957 Iceland Europe        9244.    73.5
+##  3  1962 Iceland Europe       10350.    73.7
+##  4  1967 Sweden  Europe       15258.    74.2
+##  5  1972 Sweden  Europe       17832.    74.7
+##  6  1977 Iceland Europe       19655.    76.1
+##  7  1982 Japan   Asia         19384.    77.1
+##  8  1987 Japan   Asia         22376.    78.7
+##  9  1992 Japan   Asia         26825.    79.4
+## 10  1997 Japan   Asia         28817.    80.7
+## 11  2002 Japan   Asia         28605.    82  
+## 12  2007 Japan   Asia         31656.    82.6</code></pre>
 </div>
 <div id="correlation-between-gdp-per-capita-and-life-expectancy" class="section level3">
 <h3>Correlation between GDP per Capita and Life Expectancy</h3>
