@@ -1,5 +1,6 @@
 # Introduction
 This repository contains an analysis in R, of global trends in life expectancy and GDP using the Gapminder dataset. The analysis explores data across different continents and over time, providing insights into worldwide metrics.
+**View RMarkdown File here**: https://audreyneoh.github.io/Gapminder-Analysis-in-R/
 
 ## Tools Used
 - R
