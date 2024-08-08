@@ -1,8 +1,3 @@
- install.packages("gapminder")
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("ggcorrplot")
-
 library(gapminder)
 library(dplyr)
 library(ggplot2)
